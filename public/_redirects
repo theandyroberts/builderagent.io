@@ -17,5 +17,5 @@
 /help        /docs      301
 /getting-started /docs  301
 
-# 404 fallback (Astro outputs 404.html)
-/*  /404.html  404
+# 404 fallback is handled by wrangler.jsonc: assets.not_found_handling = "404-page"
+# (Workers Static Assets serves /404.html with a 404 status for unmatched routes)
