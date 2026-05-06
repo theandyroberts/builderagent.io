@@ -1,0 +1,53 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title="Blog"
+  description="Essays from the BuilderAgent team on AI agents, platform design, and what it means to ship work that runs without you."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-24">
+      <div class="max-w-3xl">
+        <div class="eyebrow">Blog</div>
+        <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Notes from the workshop.</h1>
+        <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl">
+          Essays on AI agents, platform thinking, and what it actually means to ship work that runs without you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-app">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="group rounded-2xl border border-[var(--color-line)] bg-white p-7 transition-all hover:shadow-[var(--shadow-pop)] hover:border-[var(--color-ink)] hover:-translate-y-1">
+            <div class="flex items-center gap-2 text-xs">
+              {post.data.tags.slice(0, 2).map((tag) => (
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--color-brand-soft)] text-[var(--color-brand-deep)] font-semibold uppercase tracking-wider text-[10px]">{tag}</span>
+              ))}
+            </div>
+            <h2 class="mt-4 text-2xl group-hover:text-[var(--color-brand)] transition-colors">{post.data.title}</h2>
+            <p class="mt-3 text-[var(--color-muted)] leading-relaxed">{post.data.description}</p>
+            <div class="mt-6 flex items-center justify-between text-sm">
+              <time class="text-[var(--color-muted)]" datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+              <span class="text-[var(--color-brand)] font-medium inline-flex items-center gap-1">Read →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <p class="text-center text-[var(--color-muted)] py-20">No posts yet — check back soon.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

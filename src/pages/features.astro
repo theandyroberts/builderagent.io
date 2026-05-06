@@ -1,0 +1,136 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const featureGroups = [
+  {
+    eyebrow: 'Runtime',
+    title: 'Hosted OpenClaw, ready to work',
+    body: 'Every BuilderAgent instance is a full OpenClaw runtime running on a dedicated, secure server. No Docker. No Kubernetes. No system administration. Spin up an agent in under two minutes and start giving it work.',
+    bullets: [
+      'Dedicated cloud server per agent — no noisy-neighbor problems',
+      'Persistent file system, memory, and credentials across sessions',
+      '24/7 uptime with automatic recovery',
+      'Private subdomain for every agent (yourname.builderagent.io)',
+      'No setup scripts, no infra to manage',
+    ],
+  },
+  {
+    eyebrow: 'Continuous loops',
+    title: 'Agents that keep working',
+    body: 'BuilderAgent agents don\'t stop after one prompt. They run continuous work loops toward the goal you set, picking up where they left off, monitoring for changes, and revising their own plans as the world moves.',
+    bullets: [
+      'Goal-directed loops with self-revision and replanning',
+      'Long-horizon scheduling (hourly, daily, custom RRULE)',
+      'Persistent memory across runs so the agent improves over time',
+      'Automatic checkpointing — pick up exactly where it left off',
+      'Hands-off — you only check in when there\'s a result to ship',
+    ],
+  },
+  {
+    eyebrow: 'Brain',
+    title: 'Always running the best free model',
+    body: 'BuilderAgent evaluates the best frontier and free models every two hours and silently upgrades your agent\'s reasoning brain. You don\'t pick a model — the platform does, and it always picks the smartest one available for your tier.',
+    bullets: [
+      'Auto-evaluation against benchmark suite every 2 hours',
+      'Zero-downtime model swaps — your loops keep running',
+      'Pro tier unlocks foundation models (Claude, GPT-class)',
+      'Standard tier always pinned to the best free model available',
+      'No prompt engineering when models change — your goals stay the same',
+    ],
+  },
+  {
+    eyebrow: 'Tools & Integrations',
+    title: '800+ apps. Real actions.',
+    body: 'Your agent doesn\'t just observe the world — it acts in it. Connect Gmail, Slack, GitHub, Notion, Linear, HubSpot, Stripe, and 800 more apps via the integration catalog. Authentication is OAuth-handled; you never paste a token.',
+    bullets: [
+      '800+ pre-wired integrations across productivity, dev, sales, finance',
+      'OAuth-managed credentials — no copy-pasted API keys',
+      'Native browser automation for any site without an API',
+      'Custom skills you can write once and reuse across agents',
+      'Built-in web search, scraping, and structured data extraction',
+    ],
+  },
+  {
+    eyebrow: 'Publish',
+    title: 'Ship results to the open web',
+    body: 'Every agent gets a publishing layer. Reports, summaries, dashboards, and tracker pages can be auto-published to the agent\'s subdomain — search-engine indexable, shareable, always current.',
+    bullets: [
+      'Auto-published HTML, Markdown, or structured JSON',
+      'Indexable by Google — perfect for tracker / monitor agents',
+      'Custom domains supported on Pro and Enterprise',
+      'Slack, email, Telegram delivery channels for alerts',
+      'Versioned outputs — every report keeps its history',
+    ],
+  },
+  {
+    eyebrow: 'Trust',
+    title: 'Private by default',
+    body: 'Your agent runs on its own server with isolated storage. Credentials are encrypted at rest. We never train on your data. Cancel anytime and your instance — including persistent memory — is wiped within 24 hours.',
+    bullets: [
+      'Dedicated server isolation (no shared compute)',
+      'Encrypted credential storage',
+      'No training on customer data, ever',
+      'Audit log of every action your agent takes',
+      'GDPR-compliant data handling',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Features"
+  description="Every BuilderAgent ships with a hosted OpenClaw runtime, continuous work loops, automatic AI model upgrades, 800+ integrations, and a built-in publishing layer. Explore what\'s in the box."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="eyebrow">Features</div>
+        <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Everything in the box.</h1>
+        <p class="mt-6 text-xl text-[var(--color-ink-soft)] max-w-2xl">
+          BuilderAgent is more than a wrapper around an LLM. It's a full agent platform — runtime, loops, brain, tools, and a publishing layer — engineered for builders who want to ship without owning infrastructure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="container-app space-y-24">
+      {featureGroups.map((group, idx) => (
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+          <div class={`md:col-span-5 ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
+            <div class="eyebrow">{group.eyebrow}</div>
+            <h2 class="mt-4 text-3xl md:text-4xl leading-[1.1]">{group.title}</h2>
+            <p class="mt-5 text-lg text-[var(--color-muted)] leading-relaxed">{group.body}</p>
+          </div>
+          <div class={`md:col-span-7 ${idx % 2 === 1 ? 'md:order-1' : ''}`}>
+            <div class="card p-8 md:p-10">
+              <ul class="space-y-3.5">
+                {group.bullets.map((b) => (
+                  <li class="flex gap-3 items-start">
+                    <span class="h-6 w-6 rounded-full bg-[var(--color-brand-soft)] flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="var(--color-brand)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="text-[var(--color-body)] leading-relaxed">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-[var(--color-surface)] border-y border-[var(--color-line)]">
+    <div class="container-app">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-4xl md:text-5xl">A platform, not a prompt.</h2>
+        <p class="mt-5 text-lg text-[var(--color-muted)]">If you've been duct-taping LangChain, a Postgres, a cron job, and a Lambda together, BuilderAgent replaces the whole stack.</p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/pricing" class="btn btn-primary btn-lg">Deploy Your Agent</a>
+          <a href="/use-cases" class="btn btn-ghost btn-lg">See real examples</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,21 @@
+# Cloudflare Pages redirects
+
+# Force www → apex (uncomment if you serve apex)
+# https://www.builderagent.io/* https://builderagent.io/:splat 301!
+
+# Common URL canonicalization
+/index.html  /  301
+/home        /  301
+/products    /features  301
+/product     /features  301
+/plans       /pricing   301
+/signup      /pricing   301
+/sign-up     /pricing   301
+/start       /pricing   301
+/customers   /use-cases 301
+/examples    /use-cases 301
+/help        /docs      301
+/getting-started /docs  301
+
+# 404 fallback (Astro outputs 404.html)
+/*  /404.html  404

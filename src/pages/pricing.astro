@@ -1,0 +1,239 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const tiers = [
+  {
+    name: 'Standard',
+    tagline: 'A private AI teammate, on a private server.',
+    monthly: 29,
+    yearly: 348,
+    cta: 'Start Standard',
+    ctaHref: '#start',
+    highlight: false,
+    features: [
+      'Personal AI teammate',
+      'Unlimited AI conversations',
+      'Continuous web research',
+      'Writing & coding help',
+      'Private hosted server',
+      'Continuous monitoring loops',
+      'Automatic AI brain upgrades',
+      '24/7 uptime',
+      'Auto-published reports + subdomain',
+    ],
+  },
+  {
+    name: 'Pro',
+    tagline: 'For power builders who want frontier models and headroom.',
+    monthly: 49,
+    yearly: 588,
+    cta: 'Start Pro',
+    ctaHref: '#start',
+    highlight: true,
+    features: [
+      'Everything in Standard',
+      'Access to foundation models (Claude, GPT-class)',
+      '100 AI images per day',
+      'Personal web server',
+      'Advanced AI configuration',
+      'Custom domain support',
+      'Priority support',
+      'Higher concurrency limits',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    tagline: 'For teams that need scale, SLAs, and custom integrations.',
+    monthly: null,
+    yearly: null,
+    cta: 'Contact us',
+    ctaHref: '/contact',
+    highlight: false,
+    badge: 'Coming Soon',
+    features: [
+      'Everything in Pro',
+      'Custom model integrations',
+      'Volume seat discounts',
+      'Dedicated account manager',
+      'SLA guarantees + premium support',
+      'SSO + audit log export',
+      'Custom data-residency options',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'What\'s actually included in a BuilderAgent subscription?',
+    a: 'A dedicated, hosted OpenClaw instance running 24/7 on its own server, with continuous work loops, automatic AI brain upgrades, integration access, and a publishing layer at yourname.builderagent.io. No usage caps on Standard.',
+  },
+  {
+    q: 'How is BuilderAgent different from ChatGPT or Claude.ai?',
+    a: 'ChatGPT and Claude.ai are chat interfaces — you ask, they answer, you wait. BuilderAgent gives you a persistent, hosted agent that runs continuous work loops, monitors data sources, takes action across 800+ apps, and publishes results without you watching.',
+  },
+  {
+    q: 'How is BuilderAgent different from InstaClaw.bot?',
+    a: 'BuilderAgent and InstaClaw.bot are sister products built on the same OpenClaw cloud platform. BuilderAgent is the developer-and-builder-focused front door: same runtime, framing tuned for people who think in terms of "deploying" agents the way fly.io users think about deploying apps.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Cancel from your account dashboard. Your instance and all persistent memory is wiped within 24 hours. Yearly subscriptions are pro-rated up to your billing date.',
+  },
+  {
+    q: 'Do you train on my data?',
+    a: 'No. We never train on customer data. Your agent\'s memory, conversations, and outputs stay yours. We use frontier model providers, but route requests in a way that opts out of training where the provider supports it.',
+  },
+  {
+    q: 'Can I bring my own API keys?',
+    a: 'On Pro and Enterprise, yes — bring your own Anthropic / OpenAI / Google keys for foundation-model calls and we\'ll route through them. On Standard, the platform manages model selection automatically.',
+  },
+  {
+    q: 'What happens when a better AI model is released?',
+    a: 'Every two hours, BuilderAgent runs an evaluation suite across the latest free and frontier models. When a better one is found, your agent\'s "brain" is swapped in place — no downtime, no prompt rework.',
+  },
+  {
+    q: 'Can I use a custom domain?',
+    a: 'Yes, on Pro and Enterprise. Standard agents publish at yourname.builderagent.io. Pro lets you point an apex or subdomain at your agent.',
+  },
+];
+
+const pricingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'BuilderAgent',
+  description: 'Hosted AI agent platform powered by OpenClaw',
+  brand: { '@type': 'Brand', name: 'BuilderAgent' },
+  offers: tiers.filter(t => t.monthly).map(t => ({
+    '@type': 'Offer',
+    name: t.name,
+    price: t.monthly,
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: t.monthly,
+      priceCurrency: 'USD',
+      unitText: 'MONTH',
+    },
+  })),
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Simple, transparent pricing for BuilderAgent. Standard $29/mo, Pro $49/mo, Enterprise custom. No hidden fees, no usage caps, cancel anytime."
+  jsonLd={[pricingJsonLd, faqJsonLd]}
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-28 text-center">
+      <div class="eyebrow">Pricing</div>
+      <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05] max-w-3xl mx-auto">Simple. Honest. Cancel anytime.</h1>
+      <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl mx-auto">No hidden fees. No usage caps on Standard. Yearly saves 17%.</p>
+
+      <!-- Billing toggle -->
+      <div class="mt-10 inline-flex rounded-full border border-[var(--color-line)] bg-white p-1 shadow-[var(--shadow-card)]">
+        <button data-billing="monthly" class="billing-toggle px-5 py-2 rounded-full text-sm font-semibold bg-[var(--color-ink)] text-white transition-colors">Monthly</button>
+        <button data-billing="yearly" class="billing-toggle px-5 py-2 rounded-full text-sm font-semibold text-[var(--color-muted)] transition-colors">Yearly <span class="ml-1 text-xs text-[var(--color-spark)]">save 17%</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-app">
+      <div class="grid md:grid-cols-3 gap-6">
+        {tiers.map((tier) => (
+          <article class={`relative rounded-2xl border p-8 flex flex-col ${tier.highlight ? 'border-[var(--color-ink)] bg-[var(--color-ink)] text-white shadow-[var(--shadow-deep)]' : 'border-[var(--color-line)] bg-white shadow-[var(--shadow-card)]'}`}>
+            {tier.highlight && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--color-spark)] text-[var(--color-ink)] text-xs font-bold tracking-wide uppercase">Most Popular</span>
+            )}
+            {tier.badge && !tier.highlight && (
+              <span class="absolute top-4 right-4 inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--color-spark-soft)] text-[var(--color-spark)] text-[11px] font-bold tracking-wide uppercase">{tier.badge}</span>
+            )}
+
+            <h3 class={`text-2xl ${tier.highlight ? 'text-white' : ''}`}>{tier.name}</h3>
+            <p class={`mt-2 text-sm ${tier.highlight ? 'text-slate-300' : 'text-[var(--color-muted)]'}`}>{tier.tagline}</p>
+
+            <div class="mt-7">
+              {tier.monthly !== null ? (
+                <>
+                  <div class="flex items-baseline gap-1.5">
+                    <span class={`text-5xl font-semibold ${tier.highlight ? 'text-white' : 'text-[var(--color-ink)]'}`} style="font-family: var(--font-display);">
+                      <span class="price-monthly" data-monthly={tier.monthly}>${tier.monthly}</span><span class="price-yearly hidden" data-yearly={(tier.yearly! / 12).toFixed(0)}>${(tier.yearly! / 12).toFixed(0)}</span>
+                    </span>
+                    <span class={`${tier.highlight ? 'text-slate-400' : 'text-[var(--color-muted)]'}`}>/month</span>
+                  </div>
+                  <p class={`mt-1 text-xs ${tier.highlight ? 'text-slate-500' : 'text-[var(--color-muted)]'}`}>
+                    <span class="price-monthly-note">billed monthly</span>
+                    <span class="price-yearly-note hidden">billed ${tier.yearly}/year</span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div class={`text-5xl font-semibold ${tier.highlight ? 'text-white' : 'text-[var(--color-ink)]'}`} style="font-family: var(--font-display);">Custom</div>
+                  <p class={`mt-1 text-xs ${tier.highlight ? 'text-slate-500' : 'text-[var(--color-muted)]'}`}>contact for pricing</p>
+                </>
+              )}
+            </div>
+
+            <ul class="mt-7 space-y-3 flex-1">
+              {tier.features.map((f) => (
+                <li class="flex gap-2.5 items-start">
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" class={`mt-0.5 shrink-0 ${tier.highlight ? 'text-[var(--color-spark)]' : 'text-[var(--color-brand)]'}`}><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class={`text-sm ${tier.highlight ? 'text-slate-100' : 'text-[var(--color-body)]'}`}>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href={tier.ctaHref} class={`mt-8 btn btn-lg ${tier.highlight ? 'bg-white text-[var(--color-ink)] hover:bg-[var(--color-spark)]' : 'btn-primary'} w-full`}>{tier.cta}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-24 bg-[var(--color-surface)] border-y border-[var(--color-line)]">
+    <div class="container-app">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="mt-5 text-4xl md:text-5xl">Common questions.</h2>
+      </div>
+      <div class="mt-12 max-w-3xl mx-auto space-y-3">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl bg-white border border-[var(--color-line)] open:border-[var(--color-ink)] transition-colors">
+            <summary class="cursor-pointer list-none flex items-center justify-between p-5 md:p-6 font-semibold text-[var(--color-ink)]">
+              <span>{faq.q}</span>
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" class="transition-transform group-open:rotate-45 shrink-0 ml-3"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="px-5 md:px-6 pb-6 text-[var(--color-body)] leading-relaxed">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Billing toggle (no framework needed)
+    document.querySelectorAll('.billing-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-billing');
+        document.querySelectorAll('.billing-toggle').forEach((b) => {
+          const active = b.getAttribute('data-billing') === mode;
+          b.classList.toggle('bg-[var(--color-ink)]', active);
+          b.classList.toggle('text-white', active);
+          b.classList.toggle('text-[var(--color-muted)]', !active);
+        });
+        document.querySelectorAll('.price-monthly, .price-monthly-note').forEach((el) => el.classList.toggle('hidden', mode === 'yearly'));
+        document.querySelectorAll('.price-yearly, .price-yearly-note').forEach((el) => el.classList.toggle('hidden', mode === 'monthly'));
+      });
+    });
+  </script>
+</BaseLayout>

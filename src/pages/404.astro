@@ -1,0 +1,21 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The page you're looking for doesn't exist on BuilderAgent. Try the homepage, features, or pricing."
+  noindex={true}
+>
+  <section class="py-32 md:py-44">
+    <div class="container-app text-center max-w-xl mx-auto">
+      <p class="font-mono text-sm text-[var(--color-brand)] tracking-widest uppercase">404 · Not Found</p>
+      <h1 class="mt-5 text-6xl md:text-7xl leading-[1.05]">Goal not found.</h1>
+      <p class="mt-6 text-lg text-[var(--color-muted)]">Even our agents couldn't find this page. Probably moved or never existed.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/" class="btn btn-primary btn-lg">← Back home</a>
+        <a href="/use-cases" class="btn btn-ghost btn-lg">See examples</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

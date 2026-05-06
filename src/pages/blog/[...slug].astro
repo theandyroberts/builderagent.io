@@ -1,0 +1,92 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  author: { '@type': 'Organization', name: post.data.author },
+  publisher: {
+    '@type': 'Organization',
+    name: 'BuilderAgent',
+    logo: { '@type': 'ImageObject', url: 'https://builderagent.io/logo.svg' },
+  },
+  datePublished: post.data.publishedAt.toISOString(),
+  dateModified: (post.data.updatedAt || post.data.publishedAt).toISOString(),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://builderagent.io/blog/${post.id}`,
+  },
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  publishedTime={post.data.publishedAt.toISOString()}
+  modifiedTime={(post.data.updatedAt || post.data.publishedAt).toISOString()}
+  jsonLd={articleJsonLd}
+>
+  <article>
+    <header class="hero-glow border-b border-[var(--color-line)]">
+      <div class="container-app py-16 md:py-20">
+        <div class="max-w-3xl mx-auto">
+          <a href="/blog" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] inline-flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All posts
+          </a>
+          <div class="mt-6 flex items-center gap-2 text-xs">
+            {post.data.tags.map((tag) => (
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--color-brand-soft)] text-[var(--color-brand-deep)] font-semibold uppercase tracking-wider text-[10px]">{tag}</span>
+            ))}
+          </div>
+          <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl leading-[1.05]">{post.data.title}</h1>
+          <p class="mt-6 text-xl text-[var(--color-muted)]">{post.data.description}</p>
+          <div class="mt-8 flex items-center gap-4 text-sm text-[var(--color-muted)]">
+            <span>{post.data.author}</span>
+            <span>·</span>
+            <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="py-16 md:py-20">
+      <div class="container-app">
+        <div class="prose-builder max-w-3xl mx-auto">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16">
+      <div class="container-app text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl">Build the agent you've been thinking about.</h2>
+        <p class="mt-4 text-[var(--color-muted)]">Deploy a hosted OpenClaw instance in under two minutes.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/pricing" class="btn btn-primary btn-lg">Deploy Your Agent</a>
+          <a href="/blog" class="btn btn-ghost btn-lg">Read more posts</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

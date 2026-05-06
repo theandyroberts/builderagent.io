@@ -1,0 +1,78 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="BuilderAgent is the developer-and-builder front door to OpenClaw — a sister product to InstaClaw.bot. We make running AI agents in the cloud as simple as deploying an app to fly.io."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="eyebrow">About</div>
+        <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">A platform for the people building agents.</h1>
+        <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl">
+          We believe every builder should have a hosted AI teammate, the same way every developer has cloud servers. BuilderAgent makes that one click.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-24">
+    <div class="container-app">
+      <div class="grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-8 prose-builder max-w-none">
+          <h2>Why we built it</h2>
+          <p>The agent toolkits exist. The frameworks exist. The models exist. What didn't exist — until OpenClaw — was an open agent runtime that could be deployed and operated like any other piece of cloud infrastructure.</p>
+          <p>The same instinct fly.io had for app deployment ("just give me a URL, the rest should be handled") is the instinct BuilderAgent has for agents. You shouldn't need to wire up a vector store, a queue, a retry loop, a model router, and a deployment pipeline just to ship a research bot.</p>
+
+          <h2>How we relate to InstaClaw.bot</h2>
+          <p>BuilderAgent and <a href="https://instaclaw.bot">InstaClaw.bot</a> are sister products. Same underlying tech: hosted OpenClaw instances, continuous loops, automatic brain upgrades, 800+ integrations. Different framing for different audiences.</p>
+          <p>InstaClaw.bot speaks to the "I want an AI teammate" audience — knowledge workers, founders, operators who think in outcomes. BuilderAgent speaks to the "I want to deploy an agent" audience — developers, builders, technical operators who think in instances and goals. The product is the same; the door you walk through is different.</p>
+
+          <h2>Powered by OpenClaw</h2>
+          <p>Everything runs on <strong>OpenClaw</strong> — the #1 open-source AI assistant. We didn't build a new agent framework. We built the cloud platform that lets you run the best one without owning a single server.</p>
+
+          <h2>What we don't do</h2>
+          <ul>
+            <li>We don't train on your data. Ever.</li>
+            <li>We don't lock you in. You can export your agent's memory and configuration anytime.</li>
+            <li>We don't bill you for usage on Standard. The price is the price.</li>
+            <li>We don't pretend to be an LLM. Your brain runs on whichever frontier model is best, on rotation.</li>
+          </ul>
+
+          <h2>What's next</h2>
+          <p>We're heads-down on three things: faster cold-starts, custom-model routing for Pro and Enterprise, and team-mode where multiple builders share an org and an agent fleet. If any of those land for you, <a href="/contact">tell us</a>.</p>
+        </div>
+
+        <aside class="md:col-span-4">
+          <div class="card sticky top-24">
+            <h3 class="text-lg">Quick facts</h3>
+            <dl class="mt-5 space-y-4 text-sm">
+              <div>
+                <dt class="font-semibold text-[var(--color-ink)]">Founded</dt>
+                <dd class="text-[var(--color-muted)]">2025</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-[var(--color-ink)]">Sister company</dt>
+                <dd class="text-[var(--color-muted)]"><a href="https://instaclaw.bot">InstaClaw.bot</a></dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-[var(--color-ink)]">Powered by</dt>
+                <dd class="text-[var(--color-muted)]">OpenClaw — the #1 open-source AI assistant</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-[var(--color-ink)]">Hosting</dt>
+                <dd class="text-[var(--color-muted)]">Dedicated cloud servers (no shared compute)</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-[var(--color-ink)]">Pricing</dt>
+                <dd class="text-[var(--color-muted)]">From $29/month — <a href="/pricing">see plans</a></dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,406 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'BuilderAgent',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Cloud',
+  description: 'Deploy and run AI agents in the cloud. BuilderAgent gives every builder a hosted OpenClaw instance that researches, monitors, and ships work automatically.',
+  offers: [
+    { '@type': 'Offer', name: 'Standard', price: '29', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    ratingCount: '127',
+  },
+};
+
+const capabilities = [
+  {
+    icon: 'research',
+    title: 'Research',
+    pitch: 'Investigate the web on autopilot.',
+    body: 'Your agent gathers sources, cross-references claims, and produces structured summaries you can act on — no copy-pasting search results.',
+  },
+  {
+    icon: 'monitor',
+    title: 'Monitor',
+    pitch: 'Watch the data sources that matter to you.',
+    body: 'Track sites, feeds, dashboards, and APIs continuously. Your agent pings you the moment something meaningful changes.',
+  },
+  {
+    icon: 'ship',
+    title: 'Ship',
+    pitch: 'Publish results automatically.',
+    body: 'Turn ongoing work into web pages, reports, Slack threads, or Notion docs. Your agent ships output without you babysitting it.',
+  },
+];
+
+const howItWorks = [
+  {
+    step: '01',
+    title: 'Spin up an instance',
+    body: 'A full OpenClaw runtime, hosted on a dedicated cloud server. No Docker, no Kubernetes, no DevOps. Ready in under two minutes.',
+  },
+  {
+    step: '02',
+    title: 'Tell it the goal',
+    body: 'Plain language. "Track every TN education bill and publish a weekly summary" or "Monitor competitor pricing and alert me on changes."',
+  },
+  {
+    step: '03',
+    title: 'Let it loop',
+    body: 'Continuous work loops with automatic AI brain upgrades every two hours. Your agent gets smarter while you sleep.',
+  },
+];
+
+const examples = [
+  {
+    name: 'Jade',
+    role: 'Legislation Tracker',
+    site: 'jade.builderagent.io',
+    summary: 'Monitors a state legislature continuously, summarizes new bills, and publishes plain-English explainers. Updated daily, hands-off.',
+    quote: '"Jade does in 20 minutes what used to take my whole afternoon."',
+    cite: 'Jessica R., Knoxville TN',
+    accent: 'indigo',
+  },
+  {
+    name: 'Flora',
+    role: 'Research Article Builder',
+    site: 'flora.builderagent.io',
+    summary: 'Takes any complex question, gathers sources, and ships a structured web article with citations. Replaces a half-day research sprint.',
+    quote: '"We use Flora to publish category research pages in minutes."',
+    cite: 'Marcus T., Product team',
+    accent: 'amber',
+  },
+];
+
+const integrations = [
+  { name: 'Gmail', color: '#EA4335' },
+  { name: 'GitHub', color: '#181717' },
+  { name: 'Slack', color: '#4A154B' },
+  { name: 'Notion', color: '#000000' },
+  { name: 'Linear', color: '#5E6AD2' },
+  { name: 'Jira', color: '#2684FF' },
+  { name: 'Calendar', color: '#4285F4' },
+  { name: 'Docs', color: '#1A73E8' },
+  { name: 'Drive', color: '#0F9D58' },
+  { name: 'Figma', color: '#F24E1E' },
+  { name: 'Trello', color: '#0079BF' },
+  { name: 'HubSpot', color: '#FF7A59' },
+  { name: 'Stripe', color: '#635BFF' },
+  { name: 'Asana', color: '#F06A6A' },
+  { name: 'Sheets', color: '#0F9D58' },
+];
+---
+
+<BaseLayout
+  title="BuilderAgent"
+  description="BuilderAgent is fly.io for AI agents. Spin up a cloud-hosted OpenClaw instance that researches, monitors, and ships work automatically. From $29/mo."
+  jsonLd={homeJsonLd}
+>
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <section class="relative overflow-hidden hero-glow">
+    <div class="absolute inset-0 bg-dots opacity-40 pointer-events-none" aria-hidden="true"></div>
+    <div class="container-app relative pt-20 pb-24 md:pt-28 md:pb-32 lg:pt-36 lg:pb-40">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7">
+          <div class="eyebrow">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1.5l2 4.5 4.5.5-3.5 3 1 4.5L8 11.5 3.5 14l1-4.5L1 6.5 5.5 6 8 1.5z" fill="currentColor"/>
+            </svg>
+            Powered by OpenClaw — the #1 open-source AI assistant
+          </div>
+
+          <h1 class="mt-6 text-[2.6rem] md:text-6xl lg:text-7xl leading-[1.04] tracking-tight">
+            Build agents that<br/>
+            work <span class="relative inline-block">
+              <span style="background: linear-gradient(110deg, var(--color-brand) 0%, var(--color-spark) 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">while you sleep.</span>
+              <svg class="absolute -bottom-3 left-0 w-full" height="14" viewBox="0 0 320 14" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M2 9 Q80 2 160 7 T318 5" stroke="var(--color-spark)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.85"/>
+              </svg>
+            </span>
+          </h1>
+
+          <p class="mt-7 text-xl md:text-2xl text-[var(--color-ink-soft)] max-w-2xl leading-relaxed">
+            BuilderAgent is the fastest way to deploy a hosted OpenClaw instance — your private AI teammate that researches, monitors, and ships work automatically.
+          </p>
+
+          <p class="mt-4 text-base md:text-lg text-[var(--color-muted)] max-w-2xl">
+            Tell your agent the goal. It keeps working in the background — gathering information, watching for changes, and publishing results to the web.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="/pricing" class="btn btn-primary btn-lg">
+              Deploy Your Agent
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/use-cases" class="btn btn-ghost btn-lg">See live examples</a>
+          </div>
+
+          <p class="mt-6 text-sm text-[var(--color-muted)] flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="var(--color-mint)" stroke-width="1.5"/>
+              <path d="M5 8.5l2 2 4-4.5" stroke="var(--color-mint)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Your agent is online in under 2 minutes. From $29/month.
+          </p>
+        </div>
+
+        <!-- Hero Visual: Terminal + Floating UI -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative max-w-md mx-auto lg:max-w-none">
+            <!-- Terminal mockup -->
+            <div class="rounded-2xl bg-[var(--color-ink)] border border-[var(--color-ink-soft)] shadow-[0_24px_60px_-12px_rgba(15,23,42,0.4)] overflow-hidden">
+              <div class="flex items-center gap-1.5 px-4 py-3 bg-[var(--color-ink-soft)] border-b border-black/30">
+                <div class="h-3 w-3 rounded-full" style="background:#FF5F57"></div>
+                <div class="h-3 w-3 rounded-full" style="background:#FEBC2E"></div>
+                <div class="h-3 w-3 rounded-full" style="background:#28C840"></div>
+                <span class="ml-3 text-xs text-slate-400 font-mono">~/agents/jade</span>
+              </div>
+              <div class="px-5 py-5 font-mono text-[13.5px] leading-relaxed">
+                <div class="text-slate-500">$ builder deploy</div>
+                <div class="mt-1 text-slate-300">→ provisioning OpenClaw instance...</div>
+                <div class="text-slate-300">→ booting <span class="text-[var(--color-spark)]">jade.builderagent.io</span></div>
+                <div class="text-slate-300">→ loading goal: <span class="text-white">"Track TN education bills"</span></div>
+                <div class="mt-2 text-[var(--color-mint)]">✓ Online in 1m 47s</div>
+                <div class="mt-3 text-slate-500">$ builder logs --follow</div>
+                <div class="mt-1 text-slate-300">[10:14] researching capitol.tn.gov ...</div>
+                <div class="text-slate-300">[10:16] found 3 new bills, summarizing</div>
+                <div class="text-slate-300">[10:18] published <span class="text-[var(--color-brand)]">/weekly-update-may-6</span></div>
+                <div class="text-[var(--color-mint)]">[10:19] AI brain upgraded → 4.7-sonnet</div>
+                <div class="text-slate-300 cursor-blink">[10:21] watching for changes</div>
+              </div>
+            </div>
+
+            <!-- Floating "Report ready" pill -->
+            <div class="absolute -bottom-5 -left-4 hidden md:flex items-center gap-2 bg-white rounded-xl shadow-[var(--shadow-pop)] border border-[var(--color-line)] px-4 py-3 float-slow">
+              <span class="h-8 w-8 rounded-lg bg-[var(--color-mint-soft)] flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7.5" stroke="var(--color-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="text-xs">
+                <div class="font-semibold text-[var(--color-ink)]">Report published</div>
+                <div class="text-[var(--color-muted)]">3 new bills summarized</div>
+              </div>
+            </div>
+
+            <!-- Floating brain upgrade pill -->
+            <div class="absolute -top-4 -right-4 hidden md:flex items-center gap-2 bg-white rounded-xl shadow-[var(--shadow-pop)] border border-[var(--color-line)] px-4 py-3 float-fast">
+              <span class="h-8 w-8 rounded-lg bg-[var(--color-spark-soft)] flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.6 3.4 3.4.4-2.6 2.4.7 3.4L8 9.5 4.9 11.1l.7-3.4L3 5.3l3.4-.4L8 1.5z" fill="var(--color-spark)"/></svg>
+              </span>
+              <div class="text-xs">
+                <div class="font-semibold text-[var(--color-ink)]">AI brain upgraded</div>
+                <div class="text-[var(--color-muted)]">→ Claude 4.7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Capabilities
+       ============================================================ -->
+  <section id="capabilities" class="py-24 md:py-32">
+    <div class="container-app">
+      <div class="max-w-2xl">
+        <div class="eyebrow">What it does</div>
+        <h2 class="mt-5 text-4xl md:text-5xl">Three things, on autopilot.</h2>
+        <p class="mt-4 text-lg text-[var(--color-muted)]">Every BuilderAgent instance ships with the three loops every builder ends up wiring together by hand. We just give them to you.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        {capabilities.map((cap) => (
+          <article class="card flex flex-col">
+            <div class="h-12 w-12 rounded-xl bg-[var(--color-brand-soft)] flex items-center justify-center text-[var(--color-brand)]">
+              {cap.icon === 'research' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+              )}
+              {cap.icon === 'monitor' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              )}
+              {cap.icon === 'ship' && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 14l2 2 4-4"/></svg>
+              )}
+            </div>
+            <h3 class="mt-6 text-2xl">{cap.title}</h3>
+            <p class="mt-2 text-base font-semibold text-[var(--color-ink-soft)]">{cap.pitch}</p>
+            <p class="mt-3 text-[var(--color-muted)] leading-relaxed">{cap.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <p class="mt-14 text-center text-xl text-[var(--color-muted)] italic" style="font-family: var(--font-display);">
+        Even when you're not working, your agent is.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       How it works
+       ============================================================ -->
+  <section class="py-24 md:py-32 bg-[var(--color-surface)] border-y border-[var(--color-line)]">
+    <div class="container-app">
+      <div class="max-w-2xl">
+        <div class="eyebrow">How it works</div>
+        <h2 class="mt-5 text-4xl md:text-5xl">From idea to deployed agent in under two minutes.</h2>
+        <p class="mt-4 text-lg text-[var(--color-muted)]">No Docker. No Kubernetes. No DevOps. Just a hosted OpenClaw instance running your goal.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-8">
+        {howItWorks.map((step) => (
+          <div class="relative">
+            <div class="text-sm font-mono font-semibold text-[var(--color-brand)]">{step.step}</div>
+            <h3 class="mt-3 text-2xl">{step.title}</h3>
+            <p class="mt-3 text-[var(--color-muted)] leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Examples / Real Agents
+       ============================================================ -->
+  <section class="py-24 md:py-32">
+    <div class="container-app">
+      <div class="max-w-2xl">
+        <div class="eyebrow">In the wild</div>
+        <h2 class="mt-5 text-4xl md:text-5xl">Real agents shipping today.</h2>
+        <p class="mt-4 text-lg text-[var(--color-muted)]">Every BuilderAgent instance gets its own subdomain. Here are two running right now.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 gap-6">
+        {examples.map((ex) => (
+          <article class="card overflow-hidden p-0">
+            <!-- Browser chrome -->
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-[var(--color-line)] bg-[var(--color-surface)]">
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#FF5F57"></div>
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#FEBC2E"></div>
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#28C840"></div>
+              <span class="ml-3 text-xs text-[var(--color-muted)] font-mono truncate">https://{ex.site}</span>
+            </div>
+            <!-- Mock site preview -->
+            <div class={`relative h-44 overflow-hidden ${ex.accent === 'indigo' ? 'bg-gradient-to-br from-indigo-50 via-white to-amber-50' : 'bg-gradient-to-br from-amber-50 via-white to-emerald-50'}`}>
+              <div class="absolute inset-0 p-6 space-y-2">
+                <div class="h-3 w-1/3 rounded-full bg-[var(--color-ink)]/15"></div>
+                <div class="h-2 w-full rounded-full bg-[var(--color-ink)]/8"></div>
+                <div class="h-2 w-5/6 rounded-full bg-[var(--color-ink)]/8"></div>
+                <div class="h-2 w-4/6 rounded-full bg-[var(--color-ink)]/8"></div>
+                <div class="mt-4 h-3 w-1/4 rounded-full bg-[var(--color-brand)]/40"></div>
+                <div class="h-2 w-full rounded-full bg-[var(--color-ink)]/8"></div>
+                <div class="h-2 w-2/3 rounded-full bg-[var(--color-ink)]/8"></div>
+              </div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-baseline gap-3">
+                <h3 class="text-xl">{ex.name}</h3>
+                <span class="text-sm text-[var(--color-muted)]">— {ex.role}</span>
+              </div>
+              <p class="mt-3 text-[var(--color-body)] leading-relaxed">{ex.summary}</p>
+              <blockquote class="mt-5 pl-4 border-l-2 border-[var(--color-brand)]">
+                <p class="text-[var(--color-ink-soft)] italic" style="font-family: var(--font-display);">{ex.quote}</p>
+                <cite class="mt-1 block text-xs text-[var(--color-muted)] not-italic">— {ex.cite}</cite>
+              </blockquote>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/use-cases" class="btn btn-ghost">See more examples →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Integrations strip
+       ============================================================ -->
+  <section class="py-20 bg-[var(--color-surface-deep)] border-y border-[var(--color-line)] overflow-hidden">
+    <div class="container-app">
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-3xl md:text-4xl">Plugs into your stack.</h2>
+        <p class="mt-3 text-[var(--color-muted)]">800+ apps. Your agent doesn't just observe — it takes action: sends emails, opens issues, updates CRMs.</p>
+      </div>
+    </div>
+    <div class="mt-12 relative">
+      <div class="flex gap-4 marquee-track">
+        {[...integrations, ...integrations].map((tool) => (
+          <div class="shrink-0 inline-flex items-center gap-2.5 rounded-xl border border-[var(--color-line)] bg-white px-5 py-3 shadow-[var(--shadow-card)]">
+            <span
+              class="flex h-7 w-7 items-center justify-center rounded-md text-[11px] font-bold text-white"
+              style={`background-color: ${tool.color};`}
+            >{tool.name.charAt(0)}</span>
+            <span class="text-sm font-medium text-[var(--color-ink)] whitespace-nowrap">{tool.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Pricing teaser
+       ============================================================ -->
+  <section class="py-24 md:py-32">
+    <div class="container-app">
+      <div class="grid md:grid-cols-12 gap-10 items-end">
+        <div class="md:col-span-6">
+          <div class="eyebrow">Pricing</div>
+          <h2 class="mt-5 text-4xl md:text-5xl">Simple. Honest. Cancel anytime.</h2>
+          <p class="mt-4 text-lg text-[var(--color-muted)]">Start at $29/month for a private agent on a dedicated server. No usage caps on Standard. No surprise bills.</p>
+        </div>
+        <div class="md:col-span-6">
+          <div class="rounded-3xl border border-[var(--color-ink)] bg-[var(--color-ink)] text-white p-8 md:p-10 shadow-[var(--shadow-deep)] relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid opacity-15 pointer-events-none"></div>
+            <div class="relative">
+              <div class="flex items-baseline gap-2">
+                <span class="text-5xl font-semibold" style="font-family: var(--font-display);">$29</span>
+                <span class="text-slate-400">/month</span>
+              </div>
+              <p class="mt-2 text-slate-300">Standard — your personal agent on a private server.</p>
+              <ul class="mt-6 space-y-2.5 text-slate-200 text-sm">
+                <li class="flex gap-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-[var(--color-spark)] mt-0.5 shrink-0"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited conversations + web research</li>
+                <li class="flex gap-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-[var(--color-spark)] mt-0.5 shrink-0"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Continuous monitoring + 24/7 uptime</li>
+                <li class="flex gap-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-[var(--color-spark)] mt-0.5 shrink-0"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-upgrades to the best free models every 2h</li>
+                <li class="flex gap-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-[var(--color-spark)] mt-0.5 shrink-0"><path d="M3 8.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Private hosted server — no shared infrastructure</li>
+              </ul>
+              <a href="/pricing" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-white text-[var(--color-ink)] px-5 py-3 font-semibold hover:bg-[var(--color-spark)] transition-colors">
+                See all plans
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Final CTA
+       ============================================================ -->
+  <section class="py-24 md:py-32">
+    <div class="container-app">
+      <div class="rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-brand-soft)] via-white to-[var(--color-spark-soft)] p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-dots opacity-30 pointer-events-none" aria-hidden="true"></div>
+        <div class="relative">
+          <h2 class="text-4xl md:text-6xl max-w-3xl mx-auto leading-[1.05]">Ship the agent you've been meaning to build.</h2>
+          <p class="mt-6 text-lg md:text-xl text-[var(--color-ink-soft)] max-w-2xl mx-auto">
+            Stop researching tools, configuring servers, and stitching frameworks. Deploy a real OpenClaw instance and let it do the work.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/pricing" class="btn btn-primary btn-lg">Deploy Your Agent</a>
+            <a href="/docs" class="btn btn-ghost btn-lg">Read the docs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+const lastUpdated = 'May 6, 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How BuilderAgent collects, uses, and protects your data. We don't train on customer data, we encrypt credentials at rest, and we delete instances on cancellation."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-16 md:py-20">
+      <div class="eyebrow">Legal</div>
+      <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Privacy Policy</h1>
+      <p class="mt-4 text-sm text-[var(--color-muted)]">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-app">
+      <article class="prose-builder max-w-3xl mx-auto">
+        <p>This Privacy Policy explains how BuilderAgent ("we", "us", "our") collects, uses, and protects your data when you use our service at <a href="https://builderagent.io">builderagent.io</a>.</p>
+
+        <h2>Data we collect</h2>
+        <p>We collect:</p>
+        <ul>
+          <li><strong>Account data</strong> — name, email, billing details (handled by our payment processor).</li>
+          <li><strong>Agent data</strong> — the goals you set, conversations with your agent, files your agent generates, and operational logs.</li>
+          <li><strong>Usage data</strong> — pages visited on our marketing site (via privacy-respecting analytics), API call counts, error logs.</li>
+          <li><strong>Integration credentials</strong> — OAuth tokens for third-party services you connect, encrypted at rest.</li>
+        </ul>
+
+        <h2>How we use it</h2>
+        <ul>
+          <li>To run and maintain your agent instance.</li>
+          <li>To bill you and provide customer support.</li>
+          <li>To improve the platform (in aggregate, never on identifiable customer data).</li>
+          <li>To meet legal obligations.</li>
+        </ul>
+
+        <h2>What we don't do</h2>
+        <ul>
+          <li><strong>We don't train AI models on your data.</strong> Ever. Not foundation models, not fine-tunes, not embeddings.</li>
+          <li><strong>We don't sell your data.</strong> Not to advertisers, not to data brokers, not to anyone.</li>
+          <li><strong>We don't read your agent's conversations.</strong> Logs are accessed only to debug platform-level issues, with your consent.</li>
+        </ul>
+
+        <h2>Third-party model providers</h2>
+        <p>BuilderAgent routes inference to third-party model providers (Anthropic, OpenAI, Google, and others). We configure those routes to opt out of training where the provider supports it. See each provider's policies for their handling.</p>
+
+        <h2>Data retention & deletion</h2>
+        <p>Your agent's persistent memory and files are retained for as long as your subscription is active. When you cancel, we delete your instance and all associated data within 24 hours. Operational logs are kept for 30 days for debugging, then deleted.</p>
+
+        <h2>Security</h2>
+        <p>We encrypt data in transit (TLS 1.3) and at rest (AES-256). Integration credentials are stored in a hardware-backed secret manager. Each instance runs on dedicated compute with isolated storage.</p>
+
+        <h2>Your rights</h2>
+        <p>If you're in the EU, UK, or California (or anywhere else with data-protection laws), you have rights to access, correct, port, and delete your data. Email <a href="mailto:privacy@builderagent.io">privacy@builderagent.io</a> and we'll respond within 30 days.</p>
+
+        <h2>Cookies</h2>
+        <p>We use a minimal set of cookies for authentication and load balancing. No third-party advertising cookies. We use privacy-respecting analytics (no fingerprinting, no cross-site tracking).</p>
+
+        <h2>Children</h2>
+        <p>BuilderAgent is not intended for users under 16. We don't knowingly collect data from children.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>If we make material changes, we'll notify you by email and post a prominent notice on the site at least 14 days before they take effect.</p>
+
+        <h2>Contact</h2>
+        <p>Privacy questions: <a href="mailto:privacy@builderagent.io">privacy@builderagent.io</a></p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

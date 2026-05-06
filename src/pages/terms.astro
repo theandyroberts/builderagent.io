@@ -1,0 +1,83 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+const lastUpdated = 'May 6, 2026';
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="The terms governing your use of BuilderAgent. Plain-English summary at the top, full legal text below."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-16 md:py-20">
+      <div class="eyebrow">Legal</div>
+      <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Terms of Service</h1>
+      <p class="mt-4 text-sm text-[var(--color-muted)]">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-app">
+      <article class="prose-builder max-w-3xl mx-auto">
+        <div class="card">
+          <h3 class="!mt-0">In plain English</h3>
+          <ul>
+            <li>You pay us, we run your agent. Cancel anytime.</li>
+            <li>You own everything your agent creates. We don't.</li>
+            <li>Don't use BuilderAgent for illegal stuff, abuse, or to harm others.</li>
+            <li>We give you a great service. We don't promise it's perfect.</li>
+            <li>If we break the rules, you can sue us. If you break the rules, we can suspend your account.</li>
+          </ul>
+          <p class="text-xs text-[var(--color-muted)]">The plain-English summary is a courtesy. The legal text below is what's binding.</p>
+        </div>
+
+        <h2>1. Agreement</h2>
+        <p>By using BuilderAgent ("the Service"), operated by BuilderAgent ("we", "us"), you agree to these Terms. If you don't agree, don't use the Service.</p>
+
+        <h2>2. Account</h2>
+        <p>You must be at least 16 years old. You're responsible for keeping your account credentials secure and for all activity on your account.</p>
+
+        <h2>3. Subscriptions & billing</h2>
+        <p>Subscriptions renew automatically at the end of each billing period (monthly or yearly) unless you cancel. Cancellation takes effect at the end of the current period; we don't refund unused time except where required by law.</p>
+
+        <h2>4. Acceptable use</h2>
+        <p>You agree not to use the Service to:</p>
+        <ul>
+          <li>Violate any law or regulation.</li>
+          <li>Infringe intellectual property or privacy rights.</li>
+          <li>Generate or distribute malicious code, spam, harassment, or content harmful to minors.</li>
+          <li>Attempt to gain unauthorized access to our systems or other users' instances.</li>
+          <li>Reverse engineer the Service except where allowed by law.</li>
+          <li>Resell or sublicense the Service without written permission.</li>
+        </ul>
+        <p>We reserve the right to suspend accounts that violate these rules.</p>
+
+        <h2>5. Your content</h2>
+        <p>You own everything you input and everything your agent creates. You grant us a limited license to host, run, and display that content as needed to provide the Service.</p>
+
+        <h2>6. Our content</h2>
+        <p>The BuilderAgent platform, code, and trademarks remain ours. OpenClaw is open-source software used under its respective license.</p>
+
+        <h2>7. Disclaimers</h2>
+        <p>The Service is provided "as is". AI agents make mistakes. We don't guarantee uninterrupted availability, accuracy of agent outputs, or fitness for any particular purpose. You're responsible for reviewing your agent's work before relying on it.</p>
+
+        <h2>8. Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, our total liability for any claim arising from the Service is limited to the amount you paid us in the 12 months preceding the claim. We're not liable for indirect, incidental, or consequential damages.</p>
+
+        <h2>9. Indemnification</h2>
+        <p>You agree to indemnify us against claims arising from your misuse of the Service, your violation of these Terms, or your agent's content.</p>
+
+        <h2>10. Termination</h2>
+        <p>You can terminate at any time by canceling your subscription. We can terminate or suspend accounts for violations of these Terms or non-payment, with reasonable notice when possible.</p>
+
+        <h2>11. Governing law</h2>
+        <p>These Terms are governed by the laws of the State of Delaware, USA, without regard to conflict-of-laws principles. Disputes will be resolved in the state and federal courts of Delaware.</p>
+
+        <h2>12. Changes</h2>
+        <p>We may update these Terms. Material changes will be announced at least 14 days in advance.</p>
+
+        <h2>13. Contact</h2>
+        <p>Questions about these Terms: <a href="mailto:legal@builderagent.io">legal@builderagent.io</a></p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

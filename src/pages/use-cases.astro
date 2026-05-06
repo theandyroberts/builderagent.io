@@ -1,0 +1,147 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const cases = [
+  {
+    slug: 'legislation-tracker',
+    name: 'Jade',
+    role: 'Legislation Tracker',
+    site: 'jade.builderagent.io',
+    industry: 'Government / Policy',
+    summary: 'A continuous monitor for state legislation. Reads every new bill, summarizes in plain language, and publishes a weekly explainer page. Replaces a part-time policy analyst.',
+    setup: 'Goal: "Track every bill filed in the Tennessee state legislature relating to early-childhood education. Publish a weekly summary."',
+    delta: 'From 6 hrs/week of manual scanning → 0 hrs.',
+    gradient: 'from-indigo-50 via-white to-amber-50',
+  },
+  {
+    slug: 'research-articles',
+    name: 'Flora',
+    role: 'Research Article Builder',
+    site: 'flora.builderagent.io',
+    industry: 'Marketing / Content',
+    summary: 'Takes any complex question and ships a publication-quality article with citations. Pulls from primary sources, structures arguments, and updates pages as the topic evolves.',
+    setup: 'Goal: "When I drop a question in this thread, research it deeply and publish a structured article with citations on flora.builderagent.io."',
+    delta: 'From 4–6 hrs per article → 8 minutes.',
+    gradient: 'from-amber-50 via-white to-emerald-50',
+  },
+  {
+    slug: 'competitor-watch',
+    name: 'Ridge',
+    role: 'Competitor Pricing Watcher',
+    site: 'ridge.builderagent.io',
+    industry: 'B2B SaaS',
+    summary: 'Monitors competitor pricing pages, feature matrixes, and changelogs. Pings Slack the moment anything changes, with diff and analysis.',
+    setup: 'Goal: "Watch the pricing pages of these 12 competitors. Detect changes daily. Alert #competitive-intel with a diff and a one-line take."',
+    delta: 'Marketing team learns about price moves the same day they ship.',
+    gradient: 'from-emerald-50 via-white to-indigo-50',
+  },
+  {
+    slug: 'support-triage',
+    name: 'Bren',
+    role: 'Support Triage Assistant',
+    site: 'bren.builderagent.io',
+    industry: 'Customer Support',
+    summary: 'Reads every new support ticket, classifies severity, drafts a first-pass response, and routes to the right team. Humans approve, ship, move on.',
+    setup: 'Goal: "Watch the Linear support project. For every new issue, classify, draft a response in the comments, and tag the right teammate."',
+    delta: '8 min average first-response time, down from 4 hours.',
+    gradient: 'from-rose-50 via-white to-amber-50',
+  },
+  {
+    slug: 'standup-summary',
+    name: 'Quill',
+    role: 'Async Standup Synthesizer',
+    site: 'quill.builderagent.io',
+    industry: 'Engineering / Ops',
+    summary: 'Reads team activity across GitHub, Linear, and Slack overnight. Posts a single, synthesized standup summary every morning. Replaces meetings.',
+    setup: 'Goal: "Each weekday at 8am ET, summarize yesterday\'s shipped PRs, closed issues, and key decisions from #eng. Post to #standup."',
+    delta: 'Standup meeting deleted from the calendar. Nobody complained.',
+    gradient: 'from-sky-50 via-white to-emerald-50',
+  },
+  {
+    slug: 'lead-research',
+    name: 'Onyx',
+    role: 'Lead Research Agent',
+    site: 'onyx.builderagent.io',
+    industry: 'Sales / GTM',
+    summary: 'For every new inbound lead, researches the company, the person, recent funding, and product fit. Drops a one-page brief into HubSpot before the rep opens the inbox.',
+    setup: 'Goal: "When a new lead lands in HubSpot, build a research brief: company size, recent news, decision-maker context, fit score, suggested opener."',
+    delta: 'Reps walk into every call already informed.',
+    gradient: 'from-violet-50 via-white to-amber-50',
+  },
+];
+---
+
+<BaseLayout
+  title="Use Cases"
+  description="See real BuilderAgent agents shipping work today: legislation trackers, research builders, competitor watchers, support triage, async standups, and lead research."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="eyebrow">Use Cases</div>
+        <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Real agents, shipping real work.</h1>
+        <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl">
+          Six patterns we see over and over from BuilderAgent customers. Every one is a single goal sentence away from running on your account.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-24">
+    <div class="container-app">
+      <div class="grid md:grid-cols-2 gap-6">
+        {cases.map((c) => (
+          <article id={c.slug} class="rounded-2xl border border-[var(--color-line)] bg-white shadow-[var(--shadow-card)] overflow-hidden">
+            <!-- Browser chrome -->
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-[var(--color-line)] bg-[var(--color-surface)]">
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#FF5F57"></div>
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#FEBC2E"></div>
+              <div class="h-2.5 w-2.5 rounded-full" style="background:#28C840"></div>
+              <span class="ml-3 text-xs text-[var(--color-muted)] font-mono truncate">https://{c.site}</span>
+            </div>
+            <div class={`relative h-40 bg-gradient-to-br ${c.gradient}`}>
+              <div class="absolute inset-0 p-6 space-y-2">
+                <div class="h-3 w-1/3 rounded-full bg-[var(--color-ink)]/20"></div>
+                <div class="h-2 w-full rounded-full bg-[var(--color-ink)]/10"></div>
+                <div class="h-2 w-5/6 rounded-full bg-[var(--color-ink)]/10"></div>
+                <div class="mt-3 h-3 w-1/4 rounded-full bg-[var(--color-brand)]/40"></div>
+                <div class="h-2 w-full rounded-full bg-[var(--color-ink)]/10"></div>
+                <div class="h-2 w-2/3 rounded-full bg-[var(--color-ink)]/10"></div>
+              </div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-baseline gap-2 flex-wrap">
+                <h2 class="text-2xl">{c.name}</h2>
+                <span class="text-sm text-[var(--color-muted)]">— {c.role}</span>
+              </div>
+              <span class="mt-2 inline-block text-xs font-semibold uppercase tracking-wider text-[var(--color-brand)]">{c.industry}</span>
+
+              <p class="mt-4 text-[var(--color-body)] leading-relaxed">{c.summary}</p>
+
+              <div class="mt-5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-line)] p-4">
+                <p class="text-xs uppercase tracking-wider font-semibold text-[var(--color-muted)] mb-2">The goal</p>
+                <p class="text-sm text-[var(--color-ink-soft)] italic" style="font-family: var(--font-display);">{c.setup}</p>
+              </div>
+
+              <p class="mt-4 text-sm font-semibold text-[var(--color-mint)] flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4-4M2 8l4 4M2 8h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {c.delta}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-[var(--color-surface)] border-y border-[var(--color-line)]">
+    <div class="container-app text-center">
+      <h2 class="text-4xl md:text-5xl max-w-2xl mx-auto">What would you put your agent on?</h2>
+      <p class="mt-5 text-lg text-[var(--color-muted)] max-w-xl mx-auto">If you can describe the goal in one sentence, you can deploy it on BuilderAgent.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/pricing" class="btn btn-primary btn-lg">Deploy Your Agent</a>
+        <a href="/contact" class="btn btn-ghost btn-lg">Talk to us first</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

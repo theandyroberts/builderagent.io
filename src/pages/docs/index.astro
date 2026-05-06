@@ -1,0 +1,145 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Documentation — Quickstart"
+  description="Get a BuilderAgent instance online in under two minutes. Quickstart, core concepts, and first-agent recipes."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-24">
+      <div class="max-w-3xl">
+        <div class="eyebrow">Documentation</div>
+        <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Ship your first agent in 2 minutes.</h1>
+        <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl">
+          The only thing you need to know to get started: tell BuilderAgent the goal. The rest is just refinement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-app">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <!-- Sidebar -->
+        <aside class="lg:col-span-3">
+          <div class="sticky top-24">
+            <h4 class="text-xs uppercase tracking-wider font-semibold text-[var(--color-ink)]" style="letter-spacing: 0.08em;">On this page</h4>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li><a href="#quickstart" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Quickstart</a></li>
+              <li><a href="#concepts" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Core concepts</a></li>
+              <li><a href="#first-agent" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Your first agent</a></li>
+              <li><a href="#integrations" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Integrations</a></li>
+              <li><a href="#publish" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Publishing</a></li>
+              <li><a href="#cli" class="text-[var(--color-muted)] hover:text-[var(--color-ink)]">CLI reference</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Content -->
+        <article class="lg:col-span-9 prose-builder max-w-none">
+          <section id="quickstart">
+            <h2>Quickstart</h2>
+            <p>BuilderAgent gives you a hosted OpenClaw instance you control with a single goal sentence. Sign up, name your agent, write the goal, and your instance comes online in under two minutes.</p>
+            <ol>
+              <li>Sign up at <a href="/pricing">builderagent.io/pricing</a> and pick Standard or Pro.</li>
+              <li>Give your agent a name. This becomes its subdomain (<code>yourname.builderagent.io</code>).</li>
+              <li>Write the goal. One sentence describing what the agent should do — continuously.</li>
+              <li>Connect tools. Authenticate any of 800+ integrations the agent might need.</li>
+              <li>Watch it work. Logs, outputs, and published reports appear in real time.</li>
+            </ol>
+          </section>
+
+          <section id="concepts">
+            <h2>Core concepts</h2>
+            <h3>Instance</h3>
+            <p>An <strong>instance</strong> is a single hosted OpenClaw runtime. Every instance has a dedicated server, persistent file system, and a private subdomain. One subscription = one instance.</p>
+
+            <h3>Goal</h3>
+            <p>The <strong>goal</strong> is the plain-language objective you give your agent. It can be open-ended ("research X and publish weekly") or scoped ("for every new ticket, draft a response"). The agent revises its plan continuously to make progress against the goal.</p>
+
+            <h3>Loop</h3>
+            <p>A <strong>loop</strong> is a repeated unit of work the agent runs against the goal. Loops can be event-triggered (new email, webhook), schedule-triggered (every hour), or open-ended (continuous monitoring).</p>
+
+            <h3>Brain</h3>
+            <p>The <strong>brain</strong> is the AI model that reasons inside your agent. BuilderAgent evaluates available models every two hours and upgrades your brain to the best one for your tier. You don't pick a model.</p>
+
+            <h3>Skills</h3>
+            <p>A <strong>skill</strong> is reusable code your agent can run — anything from "fetch a URL" to "post to Slack" to a custom Python function you've written. The platform ships with 800+ pre-wired integrations as skills, and you can write your own.</p>
+          </section>
+
+          <section id="first-agent">
+            <h2>Your first agent</h2>
+            <p>Let's build a competitor pricing watcher.</p>
+
+            <h3>1. Create the instance</h3>
+            <pre><code>$ builder new ridge
+✓ Provisioning OpenClaw runtime...
+✓ Booting ridge.builderagent.io
+✓ Online in 1m 47s</code></pre>
+
+            <h3>2. Set the goal</h3>
+            <pre><code>$ builder goal ridge \
+  "Watch the pricing pages of acme.com, beta.io,
+   and gamma.app daily. Detect changes, post a diff
+   and a one-line take to Slack #competitive-intel."</code></pre>
+
+            <h3>3. Connect tools</h3>
+            <pre><code>$ builder connect ridge slack
+→ Opening OAuth flow in browser...
+✓ Connected #competitive-intel</code></pre>
+
+            <h3>4. Watch it work</h3>
+            <pre><code>$ builder logs ridge --follow
+[10:14] researching acme.com/pricing ...
+[10:15] no change since last run
+[10:15] researching beta.io/pricing ...
+[10:16] DIFF: Pro tier $49 → $59
+[10:16] posted to #competitive-intel</code></pre>
+          </section>
+
+          <section id="integrations">
+            <h2>Integrations</h2>
+            <p>BuilderAgent ships with native support for 800+ apps. Integrations are authenticated via OAuth — you never paste a token. Common ones:</p>
+            <ul>
+              <li><strong>Communication</strong> — Slack, Gmail, Telegram, Discord</li>
+              <li><strong>Productivity</strong> — Notion, Google Docs, Sheets, Drive, Calendar</li>
+              <li><strong>Engineering</strong> — GitHub, Linear, Jira, Sentry, PagerDuty</li>
+              <li><strong>Sales / CRM</strong> — HubSpot, Salesforce, Stripe, Intercom</li>
+              <li><strong>Web</strong> — built-in browser, web search, scraping, structured extraction</li>
+            </ul>
+            <p>Don't see what you need? Write a custom skill in Python and your agent can call it.</p>
+          </section>
+
+          <section id="publish">
+            <h2>Publishing</h2>
+            <p>Every BuilderAgent instance gets a publishing layer at <code>yourname.builderagent.io</code>. Your agent can publish:</p>
+            <ul>
+              <li>HTML pages (search-indexable, perfect for tracker / monitor agents)</li>
+              <li>Markdown reports (versioned, time-stamped)</li>
+              <li>Structured JSON endpoints (for downstream consumers)</li>
+            </ul>
+            <p>Pro and Enterprise tiers support custom domains.</p>
+          </section>
+
+          <section id="cli">
+            <h2>CLI reference</h2>
+            <p>The <code>builder</code> CLI is optional — everything works through the dashboard too. But if you live in the terminal:</p>
+            <pre><code>$ builder new <name>          # create instance
+$ builder goal <name> "..."   # set or update goal
+$ builder connect <name> <integration>
+$ builder logs <name> [--follow]
+$ builder status <name>
+$ builder publish <name>      # force a publish cycle
+$ builder destroy <name>      # tear down + wipe</code></pre>
+            <p>Install with: <code>npm install -g @builderagent/cli</code></p>
+          </section>
+
+          <hr />
+
+          <p>Need a hand getting started? <a href="/contact">Drop us a line</a> — we read every message.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

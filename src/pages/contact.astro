@@ -1,0 +1,92 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with the BuilderAgent team. We read every message and reply within one business day."
+>
+  <section class="hero-glow border-b border-[var(--color-line)]">
+    <div class="container-app py-20 md:py-24 text-center">
+      <div class="eyebrow">Contact</div>
+      <h1 class="mt-5 text-5xl md:text-6xl leading-[1.05]">Talk to us.</h1>
+      <p class="mt-6 text-xl text-[var(--color-muted)] max-w-2xl mx-auto">
+        Whether you're sizing up a deployment, hitting a wall, or just curious — we read every message.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-app">
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <!-- Contact info -->
+        <div class="space-y-6">
+          <div class="card">
+            <h3 class="text-lg">Email us directly</h3>
+            <p class="mt-2 text-[var(--color-muted)]">For sales, support, or anything else.</p>
+            <a href="mailto:hello@builderagent.io" class="mt-4 inline-flex items-center gap-2 font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-deep)]">
+              hello@builderagent.io
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="card">
+            <h3 class="text-lg">Enterprise & partnerships</h3>
+            <p class="mt-2 text-[var(--color-muted)]">Custom deployments, SLAs, volume discounts.</p>
+            <a href="mailto:enterprise@builderagent.io" class="mt-4 inline-flex items-center gap-2 font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-deep)]">
+              enterprise@builderagent.io
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="card">
+            <h3 class="text-lg">Press & media</h3>
+            <p class="mt-2 text-[var(--color-muted)]">Quotes, interviews, brand assets.</p>
+            <a href="mailto:press@builderagent.io" class="mt-4 inline-flex items-center gap-2 font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-deep)]">
+              press@builderagent.io
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="card">
+          <h3 class="text-xl">Send a message</h3>
+          <p class="mt-2 text-sm text-[var(--color-muted)]">Replies within one business day.</p>
+
+          <form
+            class="mt-6 space-y-4"
+            action="https://formspree.io/f/REPLACE-WITH-YOUR-FORMSPREE-ID"
+            method="POST"
+          >
+            <div>
+              <label class="block text-sm font-semibold text-[var(--color-ink)] mb-1.5" for="name">Your name</label>
+              <input type="text" name="name" id="name" required class="w-full rounded-lg border border-[var(--color-line)] px-4 py-2.5 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand-soft)] outline-none transition-colors" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-[var(--color-ink)] mb-1.5" for="email">Email</label>
+              <input type="email" name="email" id="email" required class="w-full rounded-lg border border-[var(--color-line)] px-4 py-2.5 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand-soft)] outline-none transition-colors" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-[var(--color-ink)] mb-1.5" for="topic">Topic</label>
+              <select name="topic" id="topic" class="w-full rounded-lg border border-[var(--color-line)] px-4 py-2.5 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand-soft)] outline-none transition-colors">
+                <option>General question</option>
+                <option>Sales / Pricing</option>
+                <option>Technical support</option>
+                <option>Enterprise inquiry</option>
+                <option>Partnership</option>
+                <option>Press</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-[var(--color-ink)] mb-1.5" for="message">Your message</label>
+              <textarea name="message" id="message" rows="5" required class="w-full rounded-lg border border-[var(--color-line)] px-4 py-2.5 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand-soft)] outline-none transition-colors"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-full">Send message</button>
+            <p class="text-xs text-[var(--color-muted)] text-center">By submitting, you agree to our <a href="/privacy">privacy policy</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
