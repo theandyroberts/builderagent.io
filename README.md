@@ -62,18 +62,51 @@ npm run preview
 └── .nvmrc
 ```
 
-## Deployment — Cloudflare Pages
+## Deployment
+
+This repo supports two Cloudflare deploy paths. Pick whichever matches the dashboard flow you started with.
+
+### Path A — Cloudflare Workers with Static Assets (recommended, modern)
+
+This is the path the Cloudflare dashboard now defaults to ("Set up your application — Configure your Worker project"). It uses `wrangler deploy` to ship your built `./dist` directory as a Worker that serves static assets.
+
+**Required config (already in this repo):**
+- `wrangler.jsonc` — points Wrangler at `./dist` and sets `not_found_handling: "404-page"` so Astro's `404.html` is served correctly.
+- `wrangler` is in `devDependencies` so `npx wrangler` resolves to a pinned local version.
+
+**One-click via Cloudflare's Git-connected build:**
+1. Push this repo to GitHub.
+2. In Cloudflare → **Workers & Pages** → **Create application** → **Connect to Git** → select this repo.
+3. Confirm the "Set up your application" form. The values should be:
+   - **Project name**: `builderagent-io` (must be alphanumeric + dashes only — change the form's `builderagent.io` to `builderagent-io`)
+   - **Build command**: `npm run build`
+   - **Deploy command**: `npx wrangler deploy`
+4. Click **Deploy**. Cloudflare runs the build, then `wrangler deploy`, and ships `./dist` to the edge.
+5. Add `builderagent.io` as a **Custom Domain** in the Worker's Settings → Domains & Routes. The Worker name and the public domain are independent — the Worker name is just an internal handle.
+
+**Manual deploy from your laptop:**
+```bash
+npm install
+npx wrangler login         # one-time, opens browser OAuth
+npm run deploy              # runs `astro build && wrangler deploy`
+```
+
+### Path B — Classic Cloudflare Pages (Git-only)
+
+If you'd rather use the classic Pages flow (no `wrangler.jsonc` needed; Pages handles the build itself), it still works:
 
 1. Push this repo to GitHub.
-2. In Cloudflare → **Pages** → **Create a project** → **Connect to Git** → select this repo.
-3. Set the build settings:
+2. In Cloudflare → **Workers & Pages** → **Create application** → **Pages** tab → **Connect to Git** → select this repo.
+3. Build settings:
    - **Framework preset**: Astro
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
    - **Node version**: 22 (set via `NODE_VERSION` env var or `.nvmrc`)
-4. (Optional) Add a custom domain pointing to the Pages project. The included `_redirects` and `_headers` files apply automatically.
+4. (Optional) Add a custom domain in the Pages project settings.
 
-Subsequent pushes to `main` auto-deploy.
+The `_headers` and `_redirects` files in `/public` are honored on **both** paths (Workers Static Assets and classic Pages both consume them as of late 2024).
+
+Subsequent pushes to `main` auto-deploy on either path.
 
 ## SEO checklist (already wired up)
 
